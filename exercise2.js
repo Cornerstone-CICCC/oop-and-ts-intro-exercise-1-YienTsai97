@@ -7,6 +7,46 @@
 
 class BankAccount {
   // YOUR CODE HERE
+  #accountNumber;
+  #balance;
+  static accountOne;
+  static accountTwo;
+
+  constructor(accountNumber, balance) {
+    this.#accountNumber = accountNumber
+    this.#balance = balance
+  }
+
+  get accountNumber() {
+    return this.#accountNumber
+  }
+
+  get balance() {
+    return this.#balance
+  }
+
+  deposit(addNum) {
+    this.#balance += addNum
+    console.log(this.#balance)
+  }
+
+  withdraw(deductsNum) {
+    if (deductsNum > this.accountNumber) {
+      throw new Error('Not enough amount!')
+    }
+    this.#balance -= deductsNum
+    console.log(this.#balance)
+  }
+
+  static compareAccounts(accountOne, accountTwo) {
+    if (accountOne.balance > accountTwo.balance) {
+      return accountOne
+    } else if (accountOne.balance < accountTwo.balance) {
+      return accountTwo
+    }
+    throw new Error('Two amount are equal !')
+  }
+
 }
 
 
